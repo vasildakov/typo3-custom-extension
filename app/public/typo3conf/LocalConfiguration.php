@@ -1,9 +1,9 @@
 <?php
 return [
     'BE' => [
-        'debug' => '1',
+        'debug' => false,
         'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$U1BIZGNjUmtMTGNZMC9qRQ$T/UWYDzE963vQ4OMPjdMTyUvfp3sBMLOMIDIB4gBSjc',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$UlN0bHRod3hsejM3MlM1eg$EjBAHW5eoFyRneANxAEfVNImAeRbbZ0GWNcU1oHUlrQ',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -13,10 +13,10 @@ return [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8mb4',
-                'dbname' => 'my-wonderful-website',
+                'dbname' => 'typo3_databse',
                 'driver' => 'mysqli',
                 'host' => 'mysql',
-                'password' => 'super-secret-password',
+                'password' => '1',
                 'port' => 3306,
                 'tableoptions' => [
                     'charset' => 'utf8mb4',
@@ -52,7 +52,7 @@ return [
         'cacheHash' => [
             'enforceValidation' => true,
         ],
-        'debug' => '0',
+        'debug' => true,
         'disableNoCacheParameter' => true,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
@@ -75,7 +75,7 @@ return [
                     'writerConfiguration' => [
                         'notice' => [
                             'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
-                                'disabled' => false,
+                                'disabled' => true,
                             ],
                         ],
                     ],
@@ -123,10 +123,10 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '*',
-        'displayErrors' => '1',
+        'devIPmask' => '',
+        'displayErrors' => 0,
         'encryptionKey' => '8d8a44354b1cbaba2e27909f67509acdf491a124d95dea9ca911cec68a8a197dc4bf7ccba128813233332ded9fb74640',
-        'exceptionalErrors' => 12290,
+        'exceptionalErrors' => 4096,
         'features' => [
             'yamlImportsFollowDeclarationOrder' => true,
         ],
