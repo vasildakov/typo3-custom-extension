@@ -1,7 +1,7 @@
 <?php
 return [
     'BE' => [
-        'debug' => false,
+        'debug' => true,
         'explicitADmode' => 'explicitAllow',
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$UlN0bHRod3hsejM3MlM1eg$EjBAHW5eoFyRneANxAEfVNImAeRbbZ0GWNcU1oHUlrQ',
         'passwordHashing' => [
@@ -124,7 +124,7 @@ return [
             ],
         ],
         'devIPmask' => '',
-        'displayErrors' => 0,
+        'displayErrors' => 1,
         'encryptionKey' => '8d8a44354b1cbaba2e27909f67509acdf491a124d95dea9ca911cec68a8a197dc4bf7ccba128813233332ded9fb74640',
         'exceptionalErrors' => 4096,
         'features' => [

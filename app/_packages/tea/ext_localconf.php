@@ -15,7 +15,7 @@ defined('TYPO3') or die('Access denied.');
         ],
         // non-cacheable actions
         [
-            \VasilDakov\Tea\Controller\TeaController::class => '',
+            \VasilDakov\Tea\Controller\TeaController::class => 'index',
         ]
     );
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -25,7 +25,7 @@ defined('TYPO3') or die('Access denied.');
             \VasilDakov\Tea\Controller\TeaController::class => 'show',
         ],
         [
-            \VasilDakov\Tea\Controller\TeaController::class => '',
+            \VasilDakov\Tea\Controller\TeaController::class => 'show',
         ]
     );
 })();
