@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ff2c7bba8b47dc1a6966da6368ec038",
+    "content-hash": "a0a828791b6c2d0e2640a423862613ad",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6995,13 +6995,16 @@
             "version": "1.0.1",
             "dist": {
                 "type": "path",
-                "url": "public/typo3conf/ext/site_package",
-                "reference": "4b9c960c65c44842fb31f5dc7daaa5e7524d26b0"
+                "url": "_packages/site_package",
+                "reference": "f69a1e9502ee81b4e6ea4ee25ecce465693acf73"
             },
             "require": {
                 "php": "^7.4 || ^8.0 || ^8.1 || ^8.2",
                 "typo3/cms-core": "^11.5",
                 "typo3/cms-fluid-styled-content": "^11.5"
+            },
+            "require-dev": {
+                "typo3/testing-framework": "^7.0"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -7014,30 +7017,74 @@
                     "VasilDakov\\SitePackage\\": "Classes/"
                 }
             },
+            "autoload-dev": {
+                "psr-4": {
+                    "VasilDakov\\SitePackage\\Tests\\": "Tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "TYPO3 CMS Documentation Team",
+                    "name": "Vasil Dakov",
                     "role": "Developer",
-                    "homepage": "https://typo3.org/community/teams/documentation"
-                },
-                {
-                    "name": "The TYPO3 Community",
-                    "role": "Contributor",
-                    "homepage": "https://typo3.org/community/"
+                    "homepage": "https://github.com/vasildakov/"
                 }
             ],
             "description": "Example site package from the site package tutorial",
-            "homepage": "https://github.com/TYPO3-Documentation/TYPO3CMS-Tutorial-SitePackage-Code",
+            "homepage": "https://github.com/vasildakov/typo3-custom-extension/",
             "keywords": [
-                "documentation",
                 "site package",
                 "typo3"
             ],
             "support": {
-                "issues": "https://github.com/TYPO3-Documentation/TYPO3CMS-Tutorial-SitePackage-Code/issues"
+                "issues": "https://github.com/vasildakov/typo3-custom-extension/issues"
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "vasildakov/tea",
+            "version": "1.0",
+            "dist": {
+                "type": "path",
+                "url": "_packages/tea",
+                "reference": "d6feaf285c4c816483de2db8a6dc2c3cfa77d191"
+            },
+            "require": {
+                "php": "^7.4 || ^8.0 || ^8.1 || ^8.2",
+                "typo3/cms-core": "^11.5.2 || ^12.0@dev",
+                "typo3/cms-extbase": "^11.5.2 || ^12.0@dev",
+                "typo3/cms-fluid": "^11.5.2 || ^12.0@dev",
+                "typo3/cms-frontend": "^11.5.2 || ^12.0@dev"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "tea"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "VasilDakov\\Tea\\": "Classes/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Oliver Klee",
+                    "email": "typo3-coding@oliverklee.de",
+                    "homepage": "https://www.oliverklee.de",
+                    "role": "developer"
+                }
+            ],
+            "description": "TYPO3 example extension for unit testing and best practices",
+            "homepage": "https://extensions.typo3.org/extension/tea/",
+            "support": {
+                "issues": "https://github.com/TYPO3-Documentation/tea/issues",
+                "source": "https://github.com/TYPO3-Documentation/tea",
+                "docs": "https://docs.typo3.org/p/ttn/tea/main/en-us/"
             },
             "transport-options": {
                 "relative": true

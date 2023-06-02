@@ -1,0 +1,11 @@
+// Part 4: global site configuration
+config {
+    # contentObjectExceptionHandler = 0
+
+    # Adjust the title tag to be displayed as “website - page title”
+    pageTitleSeparator = -
+    pageTitleSeparator.noTrimWrap = | | |
+
+    # Display the Admin Panel at the bottom of pages to logged in backend users
+    admPanel = 1
+}

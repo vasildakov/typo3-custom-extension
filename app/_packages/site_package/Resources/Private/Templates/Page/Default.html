@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:render partial="Jumbotron" arguments="{_all}"/>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <f:for each="{mainContent}" as="contentElement">
+                        <f:format.raw>{contentElement.data.bodytext}</f:format.raw>
+                    </f:for>
+                </div>
+            </div>
+        </div>
+    <f:render partial="Footer" arguments="{_all}"/>
+</f:section>
