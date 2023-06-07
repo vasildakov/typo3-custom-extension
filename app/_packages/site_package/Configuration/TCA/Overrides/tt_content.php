@@ -5,8 +5,25 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') or die();
 
-ExtensionUtility::registerPlugin(
-    'site_package',
-    'ProductSingle',
-    'Single Product (SitePackage)'
+// This makes the plugin selectable in the BE.
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'SitePackage',
+    'ProductIndex',
+    'LLL:EXT:site_package/Resources/Private/Language/locallang.xlf:plugin.product_index',
+    'EXT:site_package/Resources/Public/Icons/Extension.svg'
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'SitePackage',
+    'ProductShow',
+    'LLL:EXT:site_package/Resources/Private/Language/locallang.xlf:plugin.product_show',
+    'EXT:site_package/Resources/Public/Icons/Extension.svg'
+);
+
+// This removes the default controls from the plugin.
+/* $controlsToRemove = 'recursive,select_key,pages';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'] = [
+    'sitepackage_productindex' => $controlsToRemove,
+    'sitepackage_productshow' => $controlsToRemove,
+]; */

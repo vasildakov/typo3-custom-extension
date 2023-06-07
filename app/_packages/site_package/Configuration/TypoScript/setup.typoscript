@@ -33,6 +33,16 @@ page {
 
 plugin.tx_sitepackage {
     view {
-        templateRootPaths.10 = EXT:site_package//Resources/Private/Templates/
+        templateRootPath = {$plugin.tx_sitepackage.view.templateRootPath}
+        partialRootPath = {$plugin.tx_sitepackage.view.partialRootPath}
+        layoutRootPath = {$plugin.tx_sitepackage.view.layoutRootPath}
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_sitepackage.persistence.storagePid}
+    }
+
+    settings {
+        singleViewPageUid = {$plugin.tx_sitepackage.settings.singleViewPageUid}
     }
 }

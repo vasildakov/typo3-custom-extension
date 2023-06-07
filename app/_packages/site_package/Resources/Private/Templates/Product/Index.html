@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<h2>Products Index</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <f:translate key="tx_sitepackage_domain_model_product.uid"/>
+                </th>
+                <th>
+                    <f:translate key="tx_sitepackage_domain_model_product.title"/>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <f:for each="{products}" as="product">
+                <tr>
+                    <td>
+                        {product.uid}
+                    </td>
+                    <td>
+                        <f:link.action action="show" arguments="{product: product}" pageUid="{settings.singleViewPageUid}">
+                            {product.title}
+                        </f:link.action>
+                    </td>
+                </tr>
+            </f:for>
+        </tbody>
+    </table>
+</html>

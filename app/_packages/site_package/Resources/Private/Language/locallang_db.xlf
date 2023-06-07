@@ -3,16 +3,16 @@
     <file source-language="en" datatype="plaintext" original="messages">
         <header/>
         <body>
-            <trans-unit id="tx_tea_domain_model_product_tea">
-                <source>Tea</source>
+            <trans-unit id="tx_sitepackage_domain_model_product">
+                <source>Product</source>
             </trans-unit>
-            <trans-unit id="tx_tea_domain_model_product_tea.title">
+            <trans-unit id="tx_sitepackage_domain_model_product.title">
                 <source>Title</source>
             </trans-unit>
-            <trans-unit id="tx_tea_domain_model_product_tea.description">
+            <trans-unit id="tx_sitepackage_domain_model_product.description">
                 <source>Description</source>
             </trans-unit>
-            <trans-unit id="tx_tea_domain_model_product_tea.image">
+            <trans-unit id="tx_sitepackage_domain_model_product.image">
                 <source>Image</source>
             </trans-unit>
         </body>

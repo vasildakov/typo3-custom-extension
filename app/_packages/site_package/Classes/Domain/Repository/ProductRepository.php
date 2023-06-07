@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace VasilDakov\SitePackage\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use VasilDakov\SitePackage\Domain\Repository\Traits\StoragePageAgnosticTrait;
 
 /**
  * Class ProductRepository
@@ -15,5 +17,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class ProductRepository extends Repository
 {
+    use StoragePageAgnosticTrait;
 
+    protected $defaultOrderings = ['title' => QueryInterface::ORDER_ASCENDING];
 }

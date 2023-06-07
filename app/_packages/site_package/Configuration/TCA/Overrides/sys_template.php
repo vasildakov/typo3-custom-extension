@@ -2,18 +2,10 @@
 
 defined('TYPO3') || die();
 
- call_user_func(function () {
-     /**
-      * Extension key
-      */
-     $extensionKey = 'site_package';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('product', 'Configuration/TypoScript', 'Product');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+    'product',
+    'Configuration/TypoScript/',
+    'Product frontend (optional)'
+);
 
-    /**
-     * Add default TypoScript (constants and setup)
-     */
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-        $extensionKey,
-        'Configuration/TypoScript',
-        'Site Package'
-    );
-});

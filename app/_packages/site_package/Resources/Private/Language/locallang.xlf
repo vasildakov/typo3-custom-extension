@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" datatype="plaintext" original="messages">
+        <header/>
+        <body>
+            <trans-unit id="plugin.sitepackage_product_index">
+                <source>Product list</source>
+            </trans-unit>
+            <trans-unit id="plugin.sitepackage_product_show">
+                <source>Product single view</source>
+            </trans-unit>
+            <trans-unit id="index.heading">
+                <source>Our selection of assorted teas</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_product.uid">
+                <source>UID</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_product.title">
+                <source>Title</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

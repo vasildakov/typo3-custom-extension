@@ -1,33 +1,28 @@
 <?php
 
-return [
+$tca = [
     'ctrl' => [
         'title' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product',
-        'label' => 'name',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'versioningWS' => true,
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
-        'origUid' => 't3_origuid',
         'delete' => 'deleted',
-        'sortby' => 'sorting',
-        'enablecolumns' => [
-            'disabled' => 'hidden',
-        ],
-        'iconfile' => 'EXT:site_package/Resources/Public/Icons/icon_tx_sitepackage_domain_model_tag.gif',
+        'default_sortby' => 'title',
+        'iconfile' => 'EXT:site_package/Resources/Public/Icons/Record.svg',
+        'searchFields' => 'title, description',
+    ],
+    'types' => [
+        '1' => ['showitem' => 'title, description, image'],
     ],
     'columns' => [
         'title' => [
             'label' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product.title',
             'config' => [
                 'type' => 'input',
-                'size' => 20,
+                'size' => 40,
+                'max' => 255,
                 'eval' => 'trim',
                 'required' => true,
-                'max' => 256,
             ],
         ],
         'description' => [
@@ -35,74 +30,82 @@ return [
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
+                'rows' => 8,
+                'cols' => 40,
+                'max' => 2000,
+                'eval' => 'trim',
             ],
         ],
-        'post' => [
+        'image' => [
+            'label' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product.image',
             'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'language',
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        '',
-                        0,
+                'type' => 'file',
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => true,
+                    'useSortable' => false,
+                    'enabledControls' => [
+                        'hide' => false,
                     ],
                 ],
-                'foreign_table' => 'tx_sitepackage_domain_model_product',
-                'foreign_table_where' =>
-                    'AND {#tx_sitepackage_domain_model_product}.{#pid}=###CURRENT_PID###'
-                    . ' AND {#tx_sitepackage_domain_model_product}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0,
+                'allowed' => 'common-image-types',
             ],
         ],
-        'l10n_source' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-                'default' => '',
-            ],
-        ],
-        't3ver_label' => [
-            'displayCond' => 'FIELD:t3ver_label:REQ:true',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'none',
-            ],
-        ],
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
-    ],
-    'types' => [
-        0 => ['showitem' => 'sys_language_uid, l10n_parent, hidden, title, description'],
     ],
 ];
+/*
+$typo3Version = new \TYPO3\CMS\Core\Information\Typo3Version();
+if ($typo3Version->getMajorVersion() < 12) {
+    $tca = array_replace_recursive(
+        $tca,
+        [
+            'ctrl' => [
+                'cruser_id' => 'cruser_id',
+            ],
+            'columns' => [
+                'title' => [
+                    'config' => [
+                        'eval' => 'trim,required',
+                    ],
+                ],
+            ],
+        ]
+    );
+    unset($tca['columns']['title']['required']);
+    $tca['columns']['image'] = [
+        'label' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product.image',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'image',
+            [
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => true,
+                    'useSortable' => false,
+                    'enabledControls' => [
+                        'hide' => false,
+                    ],
+                ],
+            ]
+        ),
+    ];
+}
+*/
+
+$tca['columns']['image'] = [
+    'label' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product.image',
+    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+        'image',
+        [
+            'maxitems' => 1,
+            'appearance' => [
+                'collapseAll' => true,
+                'useSortable' => false,
+                'enabledControls' => [
+                    'hide' => false,
+                ],
+            ],
+        ]
+    ),
+];
+
+return $tca;
