@@ -33,8 +33,8 @@
     }
 
     dataProcessing {
-        10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-        10 {
+        40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+        40 {
             levels = 1
             includeSpacer = 1
             as = mainnavigation

@@ -15,5 +15,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <f:for each="{mainContent}" as="contentElement">
+                        <f:cObject
+                                typoscriptObjectPath="tt_content.{contentElement.data.CType}"
+                                data="{contentElement.data}"
+                                table="tt_content"
+                        />
+                    </f:for>
+                </div>
+            </div>
+        </div>
+
     <f:render partial="Footer" arguments="{_all}"/>
 </f:section>
