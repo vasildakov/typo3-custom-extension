@@ -10,13 +10,16 @@
                 <source>Product single view</source>
             </trans-unit>
             <trans-unit id="index.heading">
-                <source>Our selection of assorted teas</source>
+                <source>Products</source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_product.uid">
                 <source>UID</source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_product.title">
                 <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_product.description">
+                <source>Description</source>
             </trans-unit>
         </body>
     </file>

@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 return [
     \VasilDakov\SitePackage\Domain\Model\Product::class => [
-        'tableName' => 'tt_content',
+        'tableName' => 'tx_sitepackage_domain_model_product',
     ],
 ];

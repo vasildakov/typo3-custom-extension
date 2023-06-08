@@ -9,6 +9,8 @@ services:
       - mysql
     volumes:
       - ./app:/var/www/html
+    environment:
+      TZ: "Europe/Sofia"
   mysql:
     container_name: typo3_mysql
     restart: always

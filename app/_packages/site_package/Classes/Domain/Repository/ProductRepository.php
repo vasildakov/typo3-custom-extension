@@ -19,5 +19,5 @@ class ProductRepository extends Repository
 {
     use StoragePageAgnosticTrait;
 
-    protected $defaultOrderings = ['title' => QueryInterface::ORDER_ASCENDING];
+    // protected $defaultOrderings = ['title' => QueryInterface::ORDER_ASCENDING];
 }

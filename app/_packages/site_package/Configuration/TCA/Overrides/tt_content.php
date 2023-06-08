@@ -10,14 +10,14 @@ defined('TYPO3') or die();
 // extension name, matching the PHP namespaces (but without the vendor)
     'SitePackage',
     'ProductIndex',
-    'LLL:EXT:site_package/Resources/Private/Language/locallang.xlf:plugin.product_index',
+    'LLL:EXT:site_package/Resources/Private/Language/locallang.xlf:plugin.sitepackage_product_index',
     'EXT:site_package/Resources/Public/Icons/Extension.svg'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'SitePackage',
     'ProductShow',
-    'LLL:EXT:site_package/Resources/Private/Language/locallang.xlf:plugin.product_show',
+    'LLL:EXT:site_package/Resources/Private/Language/locallang.xlf:plugin.sitepackage_product_show',
     'EXT:site_package/Resources/Public/Icons/Extension.svg'
 );
 

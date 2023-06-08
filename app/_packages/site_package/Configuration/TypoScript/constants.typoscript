@@ -1,4 +1,4 @@
-plugin.tx_tea {
+plugin.tx_sitepackage_product {
     view {
         # cat=plugin.tx_tea/file; type=string; label=Path to template root (FE)
         templateRootPath = EXT:site_package/Resources/Private/Templates/

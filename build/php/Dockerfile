@@ -32,6 +32,11 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+ENV TZ='Europe/Sofia'
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+COPY conf.d/docker-php-timezone.ini /usr/local/etc/php/conf.d/docker-php-timezone.ini
 
 # Apache
 COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
