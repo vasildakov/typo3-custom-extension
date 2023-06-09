@@ -22,6 +22,8 @@ class Product extends AbstractEntity
 
     protected string $description = '';
 
+    protected ?float $price = null;
+
     /**
      * @phpstan-var \TYPO3\CMS\Extbase\Domain\Model\FileReference|LazyLoadingProxy|null
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
@@ -75,5 +77,21 @@ class Product extends AbstractEntity
         }
 
         return $this->image;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getPrice(): ?float
+    {
+        return $this->price;
     }
 }

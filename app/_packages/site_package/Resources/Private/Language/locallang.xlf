@@ -18,6 +18,12 @@
             <trans-unit id="tx_sitepackage_domain_model_product.title">
                 <source>Title</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_product.price">
+                <source>Price</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_product.category">
+                <source>Category</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_product.description">
                 <source>Description</source>
             </trans-unit>

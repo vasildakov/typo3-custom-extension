@@ -9,10 +9,10 @@ $tca = [
         'delete' => 'deleted',
         'default_sortby' => 'title',
         'iconfile' => 'EXT:site_package/Resources/Public/Icons/Record.svg',
-        'searchFields' => 'title, description',
+        'searchFields' => 'title, description, price',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, description, image'],
+        '1' => ['showitem' => 'title, description, price, image'],
     ],
     'columns' => [
         'title' => [
@@ -36,6 +36,16 @@ $tca = [
                 'eval' => 'trim',
             ],
         ],
+        'price' => [
+            'label' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product.price',
+            'config' => [
+                'type' => 'input',
+                'size' => 40,
+                'max' => 255,
+                'eval' => 'trim',
+                'required' => true,
+            ],
+        ],
         'image' => [
             'label' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product.image',
             'config' => [
@@ -53,6 +63,7 @@ $tca = [
         ],
     ],
 ];
+
 /*
 $typo3Version = new \TYPO3\CMS\Core\Information\Typo3Version();
 if ($typo3Version->getMajorVersion() < 12) {

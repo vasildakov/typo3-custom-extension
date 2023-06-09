@@ -9,7 +9,13 @@
                     <f:translate key="tx_sitepackage_domain_model_product.uid"/>
                 </th>
                 <th>
+                    <f:translate key="tx_sitepackage_domain_model_product.image"/>
+                </th>
+                <th>
                     <f:translate key="tx_sitepackage_domain_model_product.title"/>
+                </th>
+                <th>
+                    <f:translate key="tx_sitepackage_domain_model_product.price"/>
                 </th>
                 <th>
                     <f:translate key="tx_sitepackage_domain_model_product.description"/>
@@ -19,14 +25,14 @@
         <tbody>
             <f:for each="{products}" as="product">
                 <tr>
-                    <td>
-                        {product.uid}
-                    </td>
+                    <td>{product.uid}</td>
+                    <td><f:image image="{product.image}" class="img-thumbnail" style="width:130px" /></td>
                     <td>
                         <f:link.action action="show" arguments="{tea: tea}" pageUid="{settings.singleViewPageUid}">
                             {product.title}
                         </f:link.action>
                     </td>
+                    <td>{product.price}</td>
                     <td>
                         <f:format.raw>{product.description}</f:format.raw>
                     </td>
