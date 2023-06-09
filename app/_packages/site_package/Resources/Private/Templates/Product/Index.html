@@ -26,13 +26,21 @@
             <f:for each="{products}" as="product">
                 <tr>
                     <td>{product.uid}</td>
-                    <td><f:image image="{product.image}" class="img-thumbnail" style="width:130px" /></td>
+                    <td>
+                        <f:image image="{product.image}" class="img-thumbnail" style="width:130px" />
+                    </td>
                     <td>
                         <f:link.action action="show" arguments="{tea: tea}" pageUid="{settings.singleViewPageUid}">
                             {product.title}
                         </f:link.action>
                     </td>
-                    <td>{product.price}</td>
+                    <td>
+                        <f:format.currency decimalSeparator="." thousandsSeparator="," decimals="2"
+                                           currencySign="€" prependCurrency="true" separateCurrency="false"
+                        >
+                            {product.price}
+                        </f:format.currency>
+                    </td>
                     <td>
                         <f:format.raw>{product.description}</f:format.raw>
                     </td>
