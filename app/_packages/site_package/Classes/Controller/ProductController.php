@@ -28,6 +28,7 @@ class ProductController extends ActionController
     public function indexAction(): ResponseInterface
     {
         $this->view->assign('products', $this->repository->findAll());
+        $this->view->assign('settings', $this->settings);
         return $this->htmlResponse();
     }
 

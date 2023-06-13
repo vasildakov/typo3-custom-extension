@@ -1,7 +1,7 @@
 page {
     // Part 2: CSS file inclusion
     includeCSS {
-        bootstrap = https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css
+        bootstrap = https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css
         bootstrap.external = 1
         website = EXT:site_package/Resources/Public/Css/index.css
     }
@@ -12,7 +12,7 @@ page {
         jquery.external = 1
         popper = https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js
         popper.external = 1
-        bootstrap = https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
+        bootstrap = https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js
         bootstrap.external = 1
         website = EXT:site_package/Resources/Public/JavaScript/index.js
     }

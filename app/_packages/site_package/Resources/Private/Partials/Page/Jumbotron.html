@@ -3,11 +3,13 @@
       data-namespace-typo3-fluid="true"
 >
 
-    <div class="jumbotron">
+    <div class="container mb-5">
         <f:for each="{jumbotronContent}" as="contentElement">
-            <div class="container">
-                <h1 class="display-3">{contentElement.data.header}</h1>
-                <f:format.raw>{contentElement.data.bodytext}</f:format.raw>
+            <div class="row">
+                <div class="col-12 bg-light p-5">
+                    <h1 class="display-3">{contentElement.data.header}</h1>
+                    <f:format.raw>{contentElement.data.bodytext}</f:format.raw>
+                </div>
             </div>
         </f:for>
     </div>

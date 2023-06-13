@@ -31,7 +31,7 @@ page {
     }
 }
 
-plugin.tx_sitepackage_product {
+plugin.tx_sitepackage_productindex {
     view {
         templateRootPath = {$plugin.tx_sitepackage.view.templateRootPath}
         partialRootPath = {$plugin.tx_sitepackage.view.partialRootPath}
