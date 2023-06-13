@@ -6,7 +6,3 @@ CREATE TABLE tx_sitepackage_domain_model_product (
     image       varchar(255)    DEFAULT '' NOT NULL,
 );
 
-CREATE TABLE tx_sitepackage_domain_model_category (
-    name varchar(255) DEFAULT '' NOT NULL,
-    description text NOT NULL,
-);

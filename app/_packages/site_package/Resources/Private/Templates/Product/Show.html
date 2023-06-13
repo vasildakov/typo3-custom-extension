@@ -2,13 +2,13 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
 
-<div class="card mb-3">
+<div class="card mb-3 border-0 mb-5">
     <div class="row g-0">
         <div class="col-md-4">
             <f:image image="{product.image}" class="img-fluid rounded-start" style="width:420px" />
         </div>
         <div class="col-md-8">
-            <div class="card-body">
+            <div class="card-body p-4">
                 <h5 class="card-title mb-3">{product.title}</h5>
                 <p class="text-danger">
                     <strong>
@@ -24,9 +24,12 @@
                     </f:format.currency>
                     </strong>
                 </p>
-                <p class="card-text">{product.description -> f:format.html()}</p>
+                <p class="card-text text-muted">{product.description -> f:format.stripTags()}</p>
                 <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                <button class="btn btn-danger" type="submit">Add to Basket</button>
+                <button class="btn btn-danger px-4 rounded-1" type="submit">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="ms-2">Add to Basket</span>
+                </button>
             </div>
         </div>
     </div>

@@ -34,7 +34,31 @@ class ProductController extends ActionController
 
     public function showAction(Product $product): ResponseInterface
     {
+        // var_dump( $product->getUid());
+        //$aCategory,
+        //true,
+        //$table,
+        //$relationField
+
+        $collection = \TYPO3\CMS\Frontend\Category\Collection\CategoryCollection::load(
+            1,
+            true,
+            'tx_sitepackage_domain_model_product',
+            'categories'
+        );
+
+        /* if ($collection->count() > 0) {
+            // Add items to the collection of records for the current table
+            foreach ($collection as $item) {
+                echo '<pre>'; var_dump([
+                    'item' => $item
+                ]);
+            }
+        } */
+
+
         $this->view->assign('product', $product);
+        //$this->view->assign('category', $category);
         return $this->htmlResponse();
     }
 }
