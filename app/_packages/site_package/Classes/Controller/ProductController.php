@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\SitePackage\Controller;
 
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
 use VasilDakov\SitePackage\Domain\Model\Product;
@@ -34,31 +35,22 @@ class ProductController extends ActionController
 
     public function showAction(Product $product): ResponseInterface
     {
-        // var_dump( $product->getUid());
-        //$aCategory,
-        //true,
-        //$table,
-        //$relationField
+        DebugUtility::debug($product->getCategories(), 'categories');
 
-        $collection = \TYPO3\CMS\Frontend\Category\Collection\CategoryCollection::load(
-            1,
+        /* $collection = \TYPO3\CMS\Frontend\Category\Collection\CategoryCollection::load(
+            2,
             true,
             'tx_sitepackage_domain_model_product',
             'categories'
-        );
+        ); */
 
-        /* if ($collection->count() > 0) {
-            // Add items to the collection of records for the current table
-            foreach ($collection as $item) {
-                echo '<pre>'; var_dump([
-                    'item' => $item
-                ]);
-            }
-        } */
+        DebugUtility::debug($product, 'product');
+        //exit();
 
 
         $this->view->assign('product', $product);
-        //$this->view->assign('category', $category);
+        $this->view->assign('categories', $product->getCategories());
+
         return $this->htmlResponse();
     }
 }

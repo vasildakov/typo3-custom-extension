@@ -27,17 +27,3 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'] = [
     'sitepackage_productindex' => $controlsToRemove,
     'sitepackage_productshow' => $controlsToRemove,
 ]; */
-
-
-$productTable = 'tx_sitepackage_domain_model_product';
-
-$GLOBALS['TCA'][$productTable]['columns']['categories'] = [
-    'config' => [
-        'type' => 'category'
-    ]
-];
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
-    $productTable,
-    'categories'
-);

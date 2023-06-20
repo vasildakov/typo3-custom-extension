@@ -12,7 +12,7 @@ $tca = [
         'searchFields' => 'title, description, price',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, description, price, image'],
+        '1' => ['showitem' => 'title, description, price, image, categories'],
     ],
     'columns' => [
         'title' => [
@@ -61,8 +61,21 @@ $tca = [
                 'allowed' => 'common-image-types',
             ],
         ],
+        'categories' => [
+            'label' => 'LLL:EXT:site_package/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_product.categories',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'MM' => 'tx_sitepackage_domain_model_product_category',
+                //'foreign_table_where' => ' AND tx_sitepackage_domain_model_category.pid=###CURRENT_PID### ORDER BY tx_sitepackage_domain_model_category.title ',
+                'foreign_table' => 'tx_sitepackage_domain_model_category',
+                'minitems' => 0,
+                'maxitems' => 99,
+            ]
+        ]
     ],
 ];
+
 
 /*
 $typo3Version = new \TYPO3\CMS\Core\Information\Typo3Version();

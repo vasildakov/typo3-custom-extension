@@ -6,7 +6,7 @@ return [
     \VasilDakov\SitePackage\Domain\Model\Product::class => [
         'tableName' => 'tx_sitepackage_domain_model_product',
         'subclasses' => [
-            'oneSubClass' => \VasilDakov\SitePackage\Domain\Model\Category::class,
+            'categories' => \VasilDakov\SitePackage\Domain\Model\Category::class,
         ],
     ],
     \VasilDakov\SitePackage\Domain\Model\Category::class => [

@@ -8,6 +8,7 @@ use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Class Product
@@ -30,6 +31,20 @@ class Product extends AbstractEntity
      * @Lazy
      */
     protected $image;
+
+    /**
+     * Categories
+     *
+     * @var ObjectStorage<Category>
+     * @lazy
+     */
+    protected ObjectStorage $categories;
+
+
+    public function __construct()
+    {
+        $this->categories = new ObjectStorage();
+    }
 
     /**
      * @param string $title
@@ -93,5 +108,31 @@ class Product extends AbstractEntity
     public function getPrice(): ?float
     {
         return $this->price;
+    }
+
+    public function addCategory(Category $category): void
+    {
+        $this->categories->attach($category);
+    }
+
+    public function removeCategory(Category $category): void
+    {
+        $this->categories->detach($category);
+    }
+
+    /**
+     * @param ObjectStorage $categories
+     */
+    public function setCategories(ObjectStorage $categories): void
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getCategories(): ObjectStorage
+    {
+        return $this->categories;
     }
 }
