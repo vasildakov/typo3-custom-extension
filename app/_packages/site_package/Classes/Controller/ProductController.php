@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace VasilDakov\SitePackage\Controller;
 
+use Throwable;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
 use VasilDakov\SitePackage\Domain\Model\Product;
+use VasilDakov\SitePackage\Domain\Repository\CategoryRepository;
 use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
 
 /**
@@ -19,38 +22,58 @@ use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
  */
 class ProductController extends ActionController
 {
-    private ProductRepository $repository;
+    private ProductRepository $products;
 
-    public function injectProductRepository(ProductRepository $repository): void
+    private CategoryRepository $categories;
+
+    public function injectProductRepository(ProductRepository $products): void
     {
-        $this->repository = $repository;
+        $this->products = $products;
     }
+
+    public function injectCategoryRepository(CategoryRepository $categories): void
+    {
+        $this->categories = $categories;
+    }
+
 
     public function indexAction(): ResponseInterface
     {
-        $this->view->assign('products', $this->repository->findAll());
+        /*var_dump([
+            'args'  => $this->request->getArguments(),
+            'query' => $this->request->getQueryParams()
+        ]); */
+
+        $args = $this->request->getArguments();
+
+        if (isset($args['category'])) {
+            $products = $this->products->findByCategory($args['category']);
+        } else {
+            $products = $this->products->findAll();
+        }
+
+
+        $this->view->assign('selectedCategory', $args['category']);
+        $this->view->assign('products', $products);
+        $this->view->assign('categories', $this->categories->findAll());
         $this->view->assign('settings', $this->settings);
+
         return $this->htmlResponse();
     }
 
     public function showAction(Product $product): ResponseInterface
     {
-        DebugUtility::debug($product->getCategories(), 'categories');
-
-        /* $collection = \TYPO3\CMS\Frontend\Category\Collection\CategoryCollection::load(
-            2,
-            true,
-            'tx_sitepackage_domain_model_product',
-            'categories'
-        ); */
-
-        DebugUtility::debug($product, 'product');
-        //exit();
-
+        //DebugUtility::debug($product->getCategories(), 'categories');
+        //DebugUtility::debug($product, 'product');
 
         $this->view->assign('product', $product);
         $this->view->assign('categories', $product->getCategories());
 
         return $this->htmlResponse();
+    }
+
+    public function searchAction(): ResponseInterface
+    {
+        $this->redirect('index');
     }
 }

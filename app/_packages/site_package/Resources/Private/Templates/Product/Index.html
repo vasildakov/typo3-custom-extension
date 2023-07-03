@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="">
 
+<div class="container bg-light p-5 mb-3">
+    <f:debug inline="1">{categories}</f:debug>
+
+    <f:form action="index" controller="Product" method="POST">
+        <div class="input-group mb-3">
+            <f:form.select name="category" class="form-select">
+                <f:form.select.option value="">Select Category</f:form.select.option>
+                    <f:for each="{categories}" as="category">
+                        <f:if condition="{selectedCategory}=={category.title}">
+                            <f:then>
+                                <f:form.select.option
+                                        value="{category.title}"
+                                        additionalAttributes="{selected:true}">
+                                    {category.title}
+                                </f:form.select.option>
+                            </f:then>
+                            <f:else>
+                                <f:form.select.option
+                                        value="{category.title}">
+                                    {category.title}
+                                </f:form.select.option>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                <f:form.submit class="btn btn-primary" value="Search" />
+            </f:form.select>
+        </div>
+    </f:form>
+
+</div>
+
+
 <div class="container">
     <table class="table">
         <thead>
@@ -57,7 +89,6 @@
         </tbody>
     </table>
 </div>
-
 
     <f:debug inline="1">{_all}</f:debug>
 </html>

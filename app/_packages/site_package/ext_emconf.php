@@ -1,4 +1,5 @@
 <?php
+$GLOBALS['TSFE']->set_no_cache();
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'TYPO3 Site Package',
