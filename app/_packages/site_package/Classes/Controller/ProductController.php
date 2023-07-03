@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace VasilDakov\SitePackage\Controller;
 
 use Throwable;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use VasilDakov\SitePackage\Domain\Model\Product;
 use VasilDakov\SitePackage\Domain\Repository\CategoryRepository;
 use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
@@ -39,11 +41,39 @@ class ProductController extends ActionController
 
     public function indexAction(): ResponseInterface
     {
+
+        $itemsPerPage = 2;
+        $currentPageNumber = 1;
+        if ($this->request->hasArgument('page')) {
+            $currentPageNumber = (int)$this->request->getArgument('page');
+        }
+
+        $selectedCategory = '';
+        if ($this->request->hasArgument('category')) {
+            $selectedCategory = $this->request->getArgument('category');
+        }
+
+        $all = $this->products->findAll();
+        $paginator = new QueryResultPaginator($all, $currentPageNumber, $itemsPerPage);
+        $pagination = new SimplePagination($paginator);
+
+
+        $this->view->assignMultiple([
+            'results' => count($all),
+            'selectedCategory' => $selectedCategory,
+            'categories' => $this->categories->findAll(),
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'products' => $this->products->findPaginated($itemsPerPage, $currentPageNumber)
+        ]);
+        return $this->htmlResponse();
+
         /*var_dump([
             'args'  => $this->request->getArguments(),
             'query' => $this->request->getQueryParams()
         ]); */
 
+        /*
         $args = $this->request->getArguments();
 
         if (isset($args['category'])) {
@@ -58,7 +88,7 @@ class ProductController extends ActionController
         $this->view->assign('categories', $this->categories->findAll());
         $this->view->assign('settings', $this->settings);
 
-        return $this->htmlResponse();
+        return $this->htmlResponse(); */
     }
 
     public function showAction(Product $product): ResponseInterface

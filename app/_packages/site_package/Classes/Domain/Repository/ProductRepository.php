@@ -31,4 +31,14 @@ class ProductRepository extends Repository
             )
             ->execute();
     }
+
+    public function findPaginated(int $limit=10, int $offset=0): QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $query->setLimit($limit);
+        $query->setOffset($offset);
+
+        return $query->execute();
+    }
 }
+

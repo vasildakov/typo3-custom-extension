@@ -2,7 +2,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" lang="">
 
 <div class="container bg-light p-5 mb-3">
-    <f:debug inline="1">{categories}</f:debug>
+    <f:debug inline="1">{pagination}</f:debug>
 
     <f:form action="index" controller="Product" method="POST">
         <div class="input-group mb-3">
@@ -29,8 +29,10 @@
             </f:form.select>
         </div>
     </f:form>
-
 </div>
+
+
+
 
 
 <div class="container">
@@ -88,6 +90,28 @@
             </f:for>
         </tbody>
     </table>
+</div>
+
+
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+
+            <li class="page-item">
+                <a class="page-link" href="{f:uri.action(controller:Product, action:index, arguments:{page: paginator.firstPageNumber})}">First</a>
+            </li>
+
+            <f:for each="{pagination.allPageNumbers}" as="page">
+                <li class="page-item {f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active')}">
+                    <a class="page-link" href="{f:uri.action(controller:Product, action:index, arguments:{page: page})}">{page}</a>
+                </li>
+            </f:for>
+
+            <li class="page-item">
+                <a class="page-link" href="{f:uri.action(controller:Product, action:index, arguments:{page: paginator.lastPageNumber})}">Last</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
     <f:debug inline="1">{_all}</f:debug>
