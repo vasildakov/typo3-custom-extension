@@ -9,7 +9,6 @@ use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use VasilDakov\SitePackage\Domain\Model\Product;
 use VasilDakov\SitePackage\Domain\Repository\CategoryRepository;
@@ -42,16 +41,16 @@ class ProductController extends ActionController
     public function indexAction(): ResponseInterface
     {
 
-        $itemsPerPage = 2;
-        $currentPageNumber = 1;
-        if ($this->request->hasArgument('page')) {
-            $currentPageNumber = (int)$this->request->getArgument('page');
-        }
+        $itemsPerPage = 4;
 
-        $selectedCategory = '';
-        if ($this->request->hasArgument('category')) {
-            $selectedCategory = $this->request->getArgument('category');
-        }
+        $currentPageNumber = $this->request->hasArgument('page')
+            ? (int) $this->request->getArgument('page')
+            : 1;
+
+        $selectedCategory = $this->request->hasArgument('category')
+            ? $this->request->getArgument('category')
+            : '';
+
 
         $all = $this->products->findAll();
         $paginator = new QueryResultPaginator($all, $currentPageNumber, $itemsPerPage);
@@ -62,9 +61,9 @@ class ProductController extends ActionController
             'results' => count($all),
             'selectedCategory' => $selectedCategory,
             'categories' => $this->categories->findAll(),
-            'paginator' => $paginator,
+            'paginator'  => $paginator,
             'pagination' => $pagination,
-            'products' => $this->products->findPaginated($itemsPerPage, $currentPageNumber)
+            'products'   => $this->products->findPaginated($itemsPerPage, $currentPageNumber)
         ]);
         return $this->htmlResponse();
 
