@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\SitePackage\Domain\Repository;
 
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -32,8 +33,12 @@ class ProductRepository extends Repository
             ->execute();
     }
 
-    public function findPaginated(int $limit=10, int $offset=0): QueryResultInterface
+    public function findPaginated(int $limit, int $offset): QueryResultInterface
     {
+        DebugUtility::debug($offset);
+
+        $offset = ($offset > 1) ? ( ($offset - 1) * $limit ): 0;
+
         $query = $this->createQuery();
         $query->setLimit($limit);
         $query->setOffset($offset);
@@ -41,4 +46,3 @@ class ProductRepository extends Repository
         return $query->execute();
     }
 }
-
