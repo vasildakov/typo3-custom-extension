@@ -1,5 +1,7 @@
 FROM php:8.2-apache
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 ## Install Composer
 RUN curl -sS https://getcomposer.org/installer \
   | php -- --install-dir=/usr/local/bin --filename=composer
@@ -44,4 +46,4 @@ RUN a2enmod deflate rewrite headers mime expires
 
 EXPOSE 80
 
-WORKDIR /var/www
+WORKDIR /var/www/html
