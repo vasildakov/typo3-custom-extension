@@ -44,7 +44,21 @@ class ProductRepositoryTest extends FunctionalTestCase
         self::assertInstanceOf(Product::class, $product);
         self::assertEquals('Apple iPhone 21 Max', $product->getTitle());
         self::assertEquals('The description of the iphone', $product->getDescription());
+        self::assertEquals('1200', $product->getPrice());
 
         self::assertInstanceOf(ProductRepository::class, $this->repository);
+    }
+
+    public function testItCanFindByCategory(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/PersistedProductWithCategory.csv');
+
+        $products = $this->repository->findByCategory('Smartphone');
+        self::assertCount(1, $products);
+
+        $product = $products->getFirst();
+        self::assertInstanceOf(Product::class, $product);
+        self::assertEquals('Apple iPhone 21 Max', $product->getTitle());
+        self::assertEquals('The description of the iphone', $product->getDescription());
     }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" backupGlobals="true"
+         bootstrap="vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+         colors="true" processIsolation="false"
+         stopOnError="false" stopOnFailure="false"
+         stopOnIncomplete="false" stopOnSkipped="false"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         cacheDirectory="var/cache/.phpunit.cache" backupStaticProperties="false"
+         requireCoverageMetadata="false">
+    <coverage>
+        <report>
+            <html outputDirectory="var/log/coverage" lowUpperBound="40" highLowerBound="75"/>
+        </report>
+    </coverage>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">_packages/*/Tests/Unit/</directory>
+        </testsuite>
+
+        <testsuite name="Functional">
+            <directory suffix="Test.php">_packages/*/Tests/Functional/</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <junit outputFile="var/log/junit.xml"/>
+    </logging>
+    <php>
+        <const name="TYPO3_MODE" value="BE"/>
+        <ini name="display_errors" value="1"/>
+        <env name="TYPO3_CONTEXT" value="Testing"/>
+        <env name="XDEBUG_MODE" value="coverage"/>
+    </php>
+    <source>
+        <include>
+            <directory suffix=".php">_packages/site_package</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">_packages/*/Tests/</directory>
+        </exclude>
+    </source>
+</phpunit>

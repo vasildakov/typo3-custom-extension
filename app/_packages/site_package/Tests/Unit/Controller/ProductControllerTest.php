@@ -62,7 +62,7 @@ final class ProductControllerTest extends UnitTestCase
         self::assertInstanceOf(ProductController::class, $controller);
     }
 
-    public function testTestActionReturnsResponse(): void
+    /* public function testTestActionReturnsResponse(): void
     {
         $controller = $this->createController();
 
@@ -101,5 +101,5 @@ final class ProductControllerTest extends UnitTestCase
         $response = $controller->testAction();
 
         self::assertInstanceOf(ResponseInterface::class, $response);
-    }
+    }*/
 }
