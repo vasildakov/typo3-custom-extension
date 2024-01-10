@@ -1,0 +1,47 @@
+paths:
+  tests: _packages/*/Tests
+  output: tests/_output
+  data: tests/_data
+  support: tests/_support
+  envs: tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        #- Codeception\Extension\RunFailed
+
+suites:
+  unit:
+    path: Unit
+    actor: UnitTester
+    modules:
+      enabled:
+        - Asserts
+  acceptance:
+    actor: AcceptanceTester
+    step_decorators:
+      - \Codeception\Step\Retry
+    modules:
+      enabled:
+        - Asserts
+  functional:
+    actor: FunctionalTester
+    #bootstrap: bootstrap.php
+    modules:
+      enabled:
+        - Asserts
+
+coverage:
+  enabled: true
+  include:
+    - _packages/*.php
+  exclude:
+    - _packages/*/rector.php
+    - _packages/*/ext_emconf.php
+    - _packages/*/Configuration/*
+    - _packages/*/Build/*
+    - _packages/*/ext_localconf.php
+    - _packages/*/ext_tables.php
+    - _packages/*/node_moodules/*
+    - _packages/*/node_moodules/*.*
+    - _packages/*/Tests/*
+  remote: false

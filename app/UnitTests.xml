@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<phpunit
+        backupStaticAttributes="false"
+        forceCoversAnnotation="false"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        backupGlobals="true"
+        bootstrap="vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+        colors="true"
+        convertErrorsToExceptions="false"
+        convertWarningsToExceptions="false"
+        convertNoticesToExceptions="false"
+        processIsolation="false"
+        stopOnError="false"
+        stopOnFailure="false"
+        stopOnIncomplete="false"
+        stopOnSkipped="false"
+        verbose="false"
+        beStrictAboutTestsThatDoNotTestAnything="false"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="false">
+            <directory suffix=".php">_packages/civic_feusermanagement</directory>
+            <directory suffix=".php">_packages/civic_geocoding</directory>
+            <directory suffix=".php">_packages/civic_notificator</directory>
+            <directory suffix=".php">_packages/civic_pdf</directory>
+            <directory suffix=".php">_packages/civic_progressbar</directory>
+            <directory suffix=".php">_packages/civic_stats</directory>
+            <directory suffix=".php">_packages/civic_stats_providers</directory>
+            <directory suffix=".php">_packages/civic_submit_ai</directory>
+            <directory suffix=".php">_packages/civic_template</directory>
+            <directory suffix=".php">_packages/civic_userprojects</directory>
+            <directory suffix=".php">_packages/dpx_register_to_feuser</directory>
+        </whitelist>
+    </filter>
+  <testsuites>
+    <testsuite name="Core tests">
+      <directory suffix="Test.php">_packages/dpx_*/Tests/Unit/</directory>
+      <directory suffix="Test.php">_packages/ppk_*/Tests/Unit/</directory>
+      <directory suffix="Test.php">_packages/civic_*/Tests/Unit/</directory>
+    </testsuite>
+  </testsuites>
+  <logging>
+    <log type="coverage-html"
+         target="./log/codeCoverage"
+         lowUpperBound="40"
+         highLowerBound="75"
+         showUncoveredFiles="false"/>
+    <log type="junit"
+         target="./log/codeCoverage2.xml"
+         lowUpperBound="40"
+         highLowerBound="75"
+         showUncoveredFiles="false"/>
+  </logging>
+  <php>
+    <const name="TYPO3_MODE" value="BE"/>
+    <ini name="display_errors" value="1"/>
+    <env name="TYPO3_CONTEXT" value="Testing"/>
+    <env name="XDEBUG_MODE" value="coverage"/>
+  </php>
+</phpunit>
