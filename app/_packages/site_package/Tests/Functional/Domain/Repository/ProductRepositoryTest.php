@@ -2,7 +2,6 @@
 
 namespace VasilDakov\SitePackage\Tests\Functional\Domain\Repository;
 
-use Psr\Container\ContainerInterface;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
