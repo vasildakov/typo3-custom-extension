@@ -4,6 +4,12 @@ services:
     autoconfigure: true
     public: true
 
+  VasilDakov\SitePackage\Domain\Model\Example:
+    public: true
+
+  VasilDakov\SitePackage\Domain\Repository\ProductRepository:
+    public: true
+
   VasilDakov\SitePackage\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'

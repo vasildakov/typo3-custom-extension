@@ -3,7 +3,7 @@ services:
   php-apache:
     container_name: typo3_app
     ports:
-      - "80:80"
+      - "8088:80"
     build: './build/php'
     depends_on:
       - mysql

@@ -53,6 +53,21 @@ Apache 2 or Nginx, you can instantly run the project by using PHPs` built-in
 Please be aware that the built-in web server is single threaded and only meant
 to be used for development.
 
+
+### Tests
+
+Unit tests
+
+```shell
+./vendor/bin/phpunit -c UnitTests.xml --coverage-html var/log/coverage
+```
+
+Functional tests
+
+```shell
+./vendor/bin/phpunit -c FunctionalTests.xml --coverage-html var/log/coverage
+```
+
 ## License
 
 GPL-2.0 or later

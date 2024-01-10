@@ -1,7 +1,7 @@
 namespace: Tests
 support_namespace: Support
 suites:
-    unit:
+    Unit:
         path: Unit
         actor: UnitTester
         modules:
@@ -9,6 +9,17 @@ suites:
                 # add more modules here
                 - Asserts
         step_decorators: ~
+    Functional:
+        path: Functional
+        actor: FunctionalTester
+        error_level: E_ALL & ~E_STRICT & ~E_DEPRECATED
+        modules:
+            enabled:
+                - \Helper\Functional
+                - Asserts
+                - typo3
+        step_decorators: ~
+
 
 settings:
     shuffle: true

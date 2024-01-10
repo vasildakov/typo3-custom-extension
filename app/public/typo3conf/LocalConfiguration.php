@@ -1,9 +1,9 @@
 <?php
 return [
     'BE' => [
-        'debug' => true,
+        'debug' => false,
         'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$UlN0bHRod3hsejM3MlM1eg$EjBAHW5eoFyRneANxAEfVNImAeRbbZ0GWNcU1oHUlrQ',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$NFhCQVpqRDJXbC5VNThRTA$fWd2i8xTQ/kVLLAgM50CN2THYWtTu7wE2wGrTwCHRRM',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -13,7 +13,7 @@ return [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8mb4',
-                'dbname' => 'typo3_databse',
+                'dbname' => 'typo3_database',
                 'driver' => 'mysqli',
                 'host' => 'mysql',
                 'password' => '1',
@@ -22,7 +22,7 @@ return [
                     'charset' => 'utf8mb4',
                     'collate' => 'utf8mb4_unicode_ci',
                 ],
-                'user' => 'root',
+                'user' => 'admin',
             ],
         ],
     ],
@@ -52,7 +52,7 @@ return [
         'cacheHash' => [
             'enforceValidation' => true,
         ],
-        'debug' => true,
+        'debug' => false,
         'disableNoCacheParameter' => true,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',

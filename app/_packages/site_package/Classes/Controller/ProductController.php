@@ -105,4 +105,15 @@ class ProductController extends ActionController
     {
         $this->redirect('index');
     }
+
+
+    public function testAction(): ResponseInterface
+    {
+        $this->view->assignMultiple(
+            [
+            'results' => [],
+            ]
+        );
+        return $this->htmlResponse();
+    }
 }

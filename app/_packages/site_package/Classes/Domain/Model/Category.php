@@ -20,6 +20,12 @@ class Category extends AbstractEntity
      */
     protected ObjectStorage $products;
 
+
+    public function __construct()
+    {
+        $this->products = new ObjectStorage();
+    }
+
     /**
      * @param string $title
      */
@@ -34,6 +40,12 @@ class Category extends AbstractEntity
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+
+    public function getProducts(): ObjectStorage
+    {
+        return $this->products;
     }
 
     /**
