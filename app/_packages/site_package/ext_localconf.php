@@ -10,10 +10,10 @@ use VasilDakov\SitePackage\Controller\ProductController;
         'SitePackage',
         'ProductIndex',
         [
-            \VasilDakov\SitePackage\Controller\ProductController::class => 'index',
+            \VasilDakov\SitePackage\Controller\ProductController::class => 'index2',
         ],
         [
-            \VasilDakov\SitePackage\Controller\ProductController::class => 'index',
+            \VasilDakov\SitePackage\Controller\ProductController::class => 'index2',
         ]
     );
 })();

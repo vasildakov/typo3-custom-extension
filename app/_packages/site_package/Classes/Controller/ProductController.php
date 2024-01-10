@@ -40,7 +40,7 @@ class ProductController extends ActionController
 
     public function indexAction(): ResponseInterface
     {
-
+        dd(__METHOD__);
         $itemsPerPage = 4;
 
         $currentPageNumber = $this->request->hasArgument('page')
@@ -52,13 +52,14 @@ class ProductController extends ActionController
             : '';
 
 
-        $all = $this->products->findAll();
-        $paginator = new QueryResultPaginator($all, $currentPageNumber, $itemsPerPage);
+        $products = $this->products->findAll();
+        $paginator = new QueryResultPaginator($products, $currentPageNumber, $itemsPerPage);
         $pagination = new SimplePagination($paginator);
 
+        //dd($products);
 
         $this->view->assignMultiple([
-            'results' => count($all),
+            'results' => count($products),
             'selectedCategory' => $selectedCategory,
             'categories' => $this->categories->findAll(),
             'paginator'  => $paginator,
@@ -92,6 +93,8 @@ class ProductController extends ActionController
 
     public function showAction(Product $product): ResponseInterface
     {
+        dd(__METHOD__);
+
         //DebugUtility::debug($product->getCategories(), 'categories');
         //DebugUtility::debug($product, 'product');
 
@@ -104,16 +107,5 @@ class ProductController extends ActionController
     public function searchAction(): ResponseInterface
     {
         $this->redirect('index');
-    }
-
-
-    public function testAction(): ResponseInterface
-    {
-        $this->view->assignMultiple(
-            [
-            'results' => [],
-            ]
-        );
-        return $this->htmlResponse();
     }
 }

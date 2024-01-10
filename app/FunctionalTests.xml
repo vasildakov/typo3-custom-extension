@@ -10,9 +10,9 @@
       <directory suffix="Test.php">_packages/*/Tests/Functional/</directory>
     </testsuite>
   </testsuites>
-  <logging>
+  <!--logging>
     <junit outputFile="./log/codeCoverage2"/>
-  </logging>
+  </logging-->
   <php>
     <const name="TYPO3_MODE" value="BE"/>
     <ini name="display_errors" value="1"/>

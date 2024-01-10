@@ -6,6 +6,7 @@ use Psr\Container\ContainerInterface;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use VasilDakov\SitePackage\Domain\Model\Product;
 use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
 
 /**
@@ -28,17 +29,22 @@ class ProductRepositoryTest extends FunctionalTestCase
 
         $this->persistenceManager = $this->get(PersistenceManagerInterface::class);
 
-        $this->subject = $this->get(ProductRepository::class);
+        $this->repository = $this->get(ProductRepository::class);
     }
 
 
-    public function testJustSimpleTest(): void
+    public function testItCanFindAllProducts(): void
     {
-        $container = $this->getContainer();
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/PersistedProduct.csv');
 
-        //$repository = $container->get(ProductRepository::class);
+        $products = $this->repository->findAll();
+        self::assertCount(1, $products);
 
-        self::assertInstanceOf(ProductRepository::class, $this->subject);
-        self::assertInstanceOf(ContainerInterface::class, $container);
+        $product = $products->getFirst();
+        self::assertInstanceOf(Product::class, $product);
+        self::assertEquals('Apple iPhone 21 Max', $product->getTitle());
+        self::assertEquals('The description of the iphone', $product->getDescription());
+
+        self::assertInstanceOf(ProductRepository::class, $this->repository);
     }
 }
