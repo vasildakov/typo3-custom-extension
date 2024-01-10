@@ -21,3 +21,17 @@ $ docker compose up -d --build
 ``` 
 http://typo3.docker/typo3/install.php
 ```
+
+## Tests
+
+Unit tests
+
+```shell
+./vendor/bin/phpunit -c UnitTests.xml --coverage-html var/log/coverage
+```
+
+Functional tests
+
+```shell
+./vendor/bin/phpunit -c FunctionalTests.xml --coverage-html var/log/coverage
+```
