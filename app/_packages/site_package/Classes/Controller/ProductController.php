@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace VasilDakov\SitePackage\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use Throwable;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use VasilDakov\SitePackage\Domain\Model\Product;
 use VasilDakov\SitePackage\Domain\Repository\CategoryRepository;
@@ -49,7 +49,6 @@ class ProductController extends ActionController
         $this->eventDispatcher->dispatch(
             new SimpleEvent('Product controller index method has been called')
         );
-
 
         $this->view->assignMultiple([
             'results' => count($products),

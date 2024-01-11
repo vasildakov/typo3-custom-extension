@@ -17,6 +17,5 @@ final class SimpleEventTest extends TestCase
         $event = new SimpleEvent('message');
 
         self::assertInstanceOf(SimpleEvent::class, $event);
-
     }
 }
