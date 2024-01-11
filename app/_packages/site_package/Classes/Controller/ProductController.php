@@ -13,34 +13,22 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use VasilDakov\SitePackage\Domain\Model\Product;
 use VasilDakov\SitePackage\Domain\Repository\CategoryRepository;
 use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
+use VasilDakov\SitePackage\Event\SimpleEvent;
 
 /**
- * Class ProductController
- *
  * @author Vasil Dakov <vasildakov@gmail.com>
- * @copyright 2009-2023 Vasil Dakov
- * @version 1.0
  */
 class ProductController extends ActionController
 {
-    private ProductRepository $products;
-
-    private CategoryRepository $categories;
-
-    public function injectProductRepository(ProductRepository $products): void
-    {
-        $this->products = $products;
-    }
-
-    public function injectCategoryRepository(CategoryRepository $categories): void
-    {
-        $this->categories = $categories;
+    public function __construct(
+        private readonly ProductRepository $products,
+        private readonly CategoryRepository $categories,
+    ) {
     }
 
 
     public function indexAction(): ResponseInterface
     {
-        dd(__METHOD__);
         $itemsPerPage = 4;
 
         $currentPageNumber = $this->request->hasArgument('page')
@@ -57,6 +45,11 @@ class ProductController extends ActionController
         $pagination = new SimplePagination($paginator);
 
         //dd($products);
+
+        $this->eventDispatcher->dispatch(
+            new SimpleEvent('Product controller index method has been called')
+        );
+
 
         $this->view->assignMultiple([
             'results' => count($products),
@@ -93,8 +86,6 @@ class ProductController extends ActionController
 
     public function showAction(Product $product): ResponseInterface
     {
-        dd(__METHOD__);
-
         //DebugUtility::debug($product->getCategories(), 'categories');
         //DebugUtility::debug($product, 'product');
 

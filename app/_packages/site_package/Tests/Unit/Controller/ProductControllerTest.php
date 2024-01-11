@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VasilDakov\SitePackage\Tests\Unit\Controller;
 
 use PHPUnit\Framework\MockObject\Exception;
@@ -10,6 +12,8 @@ use Psr\Http\Message\StreamInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use TYPO3Fluid\Fluid\View\ViewInterface;
 use VasilDakov\SitePackage\Controller\ProductController;
+use VasilDakov\SitePackage\Domain\Repository\CategoryRepository;
+use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
 
 /**
  * @author Vasil Dakov <vasildakov@gmail.com>
@@ -23,6 +27,9 @@ final class ProductControllerTest extends UnitTestCase
     protected StreamInterface $stream;
     protected ViewInterface $view;
 
+    protected ProductRepository $products;
+    protected CategoryRepository $categories;
+
     /**
      * @throws Exception
      */
@@ -34,12 +41,15 @@ final class ProductControllerTest extends UnitTestCase
         $this->streamFactory   = $this->createMock(StreamFactoryInterface::class);
         $this->stream          = $this->createMock(StreamInterface::class);
 
+        $this->products        = $this->createMock(ProductRepository::class);
+        $this->categories      = $this->createMock(CategoryRepository::class);
+
         parent::setUp();
     }
 
     private function createController(): ProductController
     {
-        $controller = new ProductController();
+        $controller = new ProductController($this->products, $this->categories);
 
         $reflection = new \ReflectionClass($controller);
         $view = $reflection->getProperty('view');

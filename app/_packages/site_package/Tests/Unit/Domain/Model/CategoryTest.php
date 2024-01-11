@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VasilDakov\SitePackage\Tests\Unit\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
@@ -11,7 +13,7 @@ use VasilDakov\SitePackage\Domain\Model\Product;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @covers \VasilDakov\SitePackage\Domain\Model\Category
  */
-class CategoryTest extends TestCase
+final class CategoryTest extends TestCase
 {
     protected Product $product;
 

@@ -9,6 +9,9 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
 use VasilDakov\SitePackage\ViewHelper\GravatarViewHelper;
 
+/**
+ * @author Vasil Dakov <vasildakov@gmail.com>
+ */
 final class GravatarViewHelperTest extends UnitTestCase
 {
     protected ProductRepository $repository;
@@ -30,6 +33,7 @@ final class GravatarViewHelperTest extends UnitTestCase
         self::assertInstanceOf(GravatarViewHelper::class, $helper);
     }
 
+
     public function testItCanRenderExpectedString(): void
     {
         // Arrange
@@ -38,6 +42,7 @@ final class GravatarViewHelperTest extends UnitTestCase
         $helper = new GravatarViewHelper($this->repository);
 
         // Arrange
+        $helper->initializeArguments();
         $reflection = new \ReflectionClass($helper);
         $arguments = $reflection->getProperty('arguments');
         $arguments->setValue($helper, ['emailAddress' => $email]);

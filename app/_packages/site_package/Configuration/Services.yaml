@@ -2,14 +2,30 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: false
-
-  #VasilDakov\SitePackage\Domain\Model\Example:
-  #  public: true
-
-  #VasilDakov\SitePackage\Domain\Repository\ProductRepository:
-  #  public: true
+    public: true
 
   VasilDakov\SitePackage\:
     resource: '../Classes/*'
-    #exclude: '../Classes/Domain/Model/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  product_repository:
+    class: VasilDakov\SitePackage\Domain\Repository\ProductRepository
+
+  category_repository:
+    class: VasilDakov\SitePackage\Domain\Repository\CategoryRepository
+
+  product_controller:
+    class: VasilDakov\SitePackage\Controller\ProductController
+    arguments: ['@product_repository', '@category_repository']
+
+  VasilDakov\SitePackage\Event\SimpleEvent:
+    public: true
+    arguments:
+      $message: ''
+
+  VasilDakov\SitePackage\EventListener\SimpleEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'SimpleEventListener'
+        event: VasilDakov\SitePackage\Event\SimpleEvent
+

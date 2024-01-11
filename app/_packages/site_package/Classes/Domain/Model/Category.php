@@ -8,6 +8,9 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 
+/**
+ * @author Vasil Dakov <vasildakov@gmail.com>
+ */
 class Category extends AbstractEntity
 {
     protected string $title = '';

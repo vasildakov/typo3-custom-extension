@@ -61,7 +61,9 @@
                 <tr>
                     <td>{product.uid}</td>
                     <td>
-                        <f:image image="{product.image}" class="img-thumbnail border-0" style="width:130px" />
+                        <f:if condition="{product.image}">
+                            <f:image image="{product.image}" class="img-thumbnail border-0" style="width:130px" />
+                        </f:if>
                     </td>
                     <td>
                         <p class="text-nowrap"><f:link.action action="show" arguments="{product: product}" pageUid="{settings.singleViewPageUid}">

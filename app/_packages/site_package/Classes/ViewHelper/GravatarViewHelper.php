@@ -8,6 +8,9 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderS
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
 
+/**
+ * @author Vasil Dakov <vasildakov@gmail.com>
+ */
 final class GravatarViewHelper extends AbstractViewHelper
 {
     //use CompileWithContentArgumentAndRenderStatic;
@@ -18,9 +21,6 @@ final class GravatarViewHelper extends AbstractViewHelper
 
     public function __construct(ProductRepository $repository)
     {
-        //var_dump(is_array($repository->findByCategory('category')));
-        //var_dump($repository->findByCategory('category')->toArray());
-        //var_dump($example->hello());
         $this->repository = $repository;
     }
 
@@ -38,19 +38,4 @@ final class GravatarViewHelper extends AbstractViewHelper
     {
         return '<img src="https://www.gravatar.com/avatar/' . md5($this->arguments['emailAddress']) . '" />';
     }
-
-
-    /*
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        $emailAddress = $renderChildrenClosure();
-
-        var_dump(static::$repository->findByCategory('category')->toArray());
-
-        return '<img src="http://www.gravatar.com/avatar/' . md5($emailAddress) . '" />';
-    }
-    */
 }

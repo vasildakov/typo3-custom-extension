@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VasilDakov\SitePackage\Tests\Unit\Domain\Repository;
 
 use PHPUnit\Framework\TestCase;
@@ -11,7 +13,10 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use VasilDakov\SitePackage\Domain\Model\Product;
 use VasilDakov\SitePackage\Domain\Repository\ProductRepository;
 
-class ProductRepositoryTest extends TestCase
+/**
+ * @author Vasil Dakov <vasildakov@gmail.com>
+ */
+final class ProductRepositoryTest extends TestCase
 {
     protected ObjectManagerInterface $objectManager;
     protected PersistenceManagerInterface $persistenceManager;

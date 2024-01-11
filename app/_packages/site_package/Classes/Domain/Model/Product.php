@@ -11,11 +11,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Class Product
- *
  * @author Vasil Dakov <vasildakov@gmail.com>
- * @copyright 2009-2023 Vasil Dakov
- * @version 1.0
  */
 class Product extends AbstractEntity
 {
