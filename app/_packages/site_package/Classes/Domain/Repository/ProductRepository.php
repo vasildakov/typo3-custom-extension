@@ -24,7 +24,7 @@ class ProductRepository extends Repository
 {
     //use StoragePageAgnosticTrait;
 
-    public function initializeObject()
+    public function initializeObject(): void
     {
         /** @var QuerySettingsInterface $querySettings */
         $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
@@ -32,7 +32,7 @@ class ProductRepository extends Repository
         $this->setDefaultQuerySettings($querySettings);
     }
 
-    public function createQuery()
+    public function createQuery(): QueryInterface
     {
         $query = parent::createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);

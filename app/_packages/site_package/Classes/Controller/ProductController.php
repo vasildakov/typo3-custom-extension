@@ -9,6 +9,7 @@ use Throwable;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use VasilDakov\SitePackage\Domain\Model\Product;
 use VasilDakov\SitePackage\Domain\Repository\CategoryRepository;
@@ -18,7 +19,7 @@ use VasilDakov\SitePackage\Event\SimpleEvent;
 /**
  * @author Vasil Dakov <vasildakov@gmail.com>
  */
-class ProductController extends ActionController
+final class ProductController extends ActionController
 {
     public function __construct(
         private readonly ProductRepository $products,
@@ -26,7 +27,9 @@ class ProductController extends ActionController
     ) {
     }
 
-
+    /**
+     * @throws NoSuchArgumentException
+     */
     public function indexAction(): ResponseInterface
     {
         $itemsPerPage = 4;
@@ -41,8 +44,10 @@ class ProductController extends ActionController
 
 
         $products = $this->products->findAll();
+
         $paginator = new QueryResultPaginator($products, $currentPageNumber, $itemsPerPage);
         $pagination = new SimplePagination($paginator);
+
 
         //dd($products);
 
@@ -50,37 +55,19 @@ class ProductController extends ActionController
             new SimpleEvent('Product controller index method has been called')
         );
 
-        $this->view->assignMultiple([
-            'results' => count($products),
-            'selectedCategory' => $selectedCategory,
-            'categories' => $this->categories->findAll(),
-            'paginator'  => $paginator,
-            'pagination' => $pagination,
-            'products'   => $this->products->findPaginated($itemsPerPage, $currentPageNumber)
-        ]);
+        $this->view->assignMultiple(
+            [
+                'results'          => $products->count(),
+                'selectedCategory' => $selectedCategory,
+                'categories'       => $this->categories->findAll(),
+                'paginator'        => $paginator,
+                'pagination'       => $pagination,
+                'products'         => $this->products->findPaginated($itemsPerPage, $currentPageNumber)
+            ]
+        );
+
         return $this->htmlResponse();
 
-        /*var_dump([
-            'args'  => $this->request->getArguments(),
-            'query' => $this->request->getQueryParams()
-        ]); */
-
-        /*
-        $args = $this->request->getArguments();
-
-        if (isset($args['category'])) {
-            $products = $this->products->findByCategory($args['category']);
-        } else {
-            $products = $this->products->findAll();
-        }
-
-
-        $this->view->assign('selectedCategory', $args['category']);
-        $this->view->assign('products', $products);
-        $this->view->assign('categories', $this->categories->findAll());
-        $this->view->assign('settings', $this->settings);
-
-        return $this->htmlResponse(); */
     }
 
     public function showAction(Product $product): ResponseInterface
@@ -96,6 +83,7 @@ class ProductController extends ActionController
 
     public function searchAction(): ResponseInterface
     {
-        $this->redirect('index');
+        // return $this->redirect('index');
+        return $this->htmlResponse();
     }
 }
