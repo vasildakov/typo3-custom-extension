@@ -1,12 +1,20 @@
 version: "3.9"
+networks:
+  default:
+    #external: true
+    driver:  bridge
+
 services:
   php-apache:
     container_name: typo3_app
+    networks:
+      - default
     ports:
       - "8088:80"
     build: './build/php'
     depends_on:
       - mysql
+      - chrome
     volumes:
       - ./app:/var/www/html
     environment:
@@ -14,6 +22,8 @@ services:
 
   mysql:
     container_name: typo3_mysql
+    networks:
+      - default
     restart: always
     ports:
       - "3309:3306"
@@ -28,9 +38,12 @@ services:
     volumes:
       - database:/var/lib/mysql
 
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: typo3_phpmyadmin
+    networks:
+      - default
     ports:
       - "8085:80"
     environment:
@@ -39,6 +52,15 @@ services:
     restart: always
     depends_on:
       - mysql
+
+  chrome:
+    image: selenium/standalone-chrome
+    container_name: typo3_chrome
+    networks:
+      - default
+    ports:
+      - "4444:4444"
+
 
 volumes:
   app:

@@ -1,0 +1,19 @@
+default:
+  autoload:
+    '': '%paths.base%/features/bootstrap/'
+
+  extensions:
+    Behat\MinkExtension:
+      base_url:  'http://typo3.docker'
+      sessions:
+        default_session:
+          goutte: ~
+        selenium_session:
+          selenium2:
+            browser: chrome
+            wd_host: localhost:4444/wd/hub
+            capabilities: {"browserName": "chrome", "browser": "chrome"}
+
+  suites:
+    default:
+      contexts: [FeatureContext]
