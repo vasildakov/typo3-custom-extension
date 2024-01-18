@@ -16,10 +16,19 @@ RUN apt-get install --yes libicu-dev \
     && docker-php-ext-install intl
 
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug \
-    && echo "xdebug.mode=debug,coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.client_host = host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN pecl install pcov && \
+  docker-php-ext-enable pcov
+
+
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+    #&& echo "xdebug.mode=profile,debug,coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    #&& echo "xdebug.client_host = host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    #&& echo "xdebug.start_with_request=trigger" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    #&& echo "xdebug.output_dir=/tmp/webgrind" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    #&& echo "xdebug.profiler_output_name=cachegrind.out.%p-%H-%R" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    #&& echo "xdebug.profiler_append=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    #&& echo "xdebug.log=/tmp/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 
 ## Install zip libraries and extension
@@ -46,6 +55,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 
 COPY conf.d/docker-php-timezone.ini /usr/local/etc/php/conf.d/docker-php-timezone.ini
+COPY conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Apache
 COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf

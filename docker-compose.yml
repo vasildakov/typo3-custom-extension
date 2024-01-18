@@ -1,7 +1,6 @@
 version: "3.9"
 networks:
   default:
-    #external: true
     driver:  bridge
 
 services:
@@ -54,13 +53,23 @@ services:
       - mysql
 
   chrome:
-    image: selenium/standalone-chrome
+    image: selenium/standalone-chrome:latest
     container_name: typo3_chrome
     networks:
       - default
     ports:
       - "4444:4444"
 
+  webgrind:
+    image: jokkedk/webgrind:latest
+    platform: linux/amd64
+    container_name: typo3_webgrind
+    #networks:
+    #  - default
+    ports:
+      - "8086:80"
+    volumes:
+      - ./app/var/cache/xdebug:/tmp
 
 volumes:
   app:

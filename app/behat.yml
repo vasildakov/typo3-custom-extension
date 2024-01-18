@@ -4,7 +4,7 @@ default:
 
   extensions:
     Behat\MinkExtension:
-      base_url:  'http://typo3.docker'
+      base_url:  'http://typo3.docker/'
       sessions:
         default_session:
           goutte: ~

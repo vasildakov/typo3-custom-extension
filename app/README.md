@@ -71,3 +71,6 @@ Functional tests
 ## License
 
 GPL-2.0 or later
+
+## Links
+https://www.kurmis.com/2020/01/15/pcov-for-faster-code-coverage.html
