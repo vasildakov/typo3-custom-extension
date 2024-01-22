@@ -16,9 +16,7 @@ RUN apt-get install --yes libicu-dev \
     && docker-php-ext-install intl
 
 
-RUN pecl install pcov && \
-  docker-php-ext-enable pcov
-
+# RUN pecl install pcov && docker-php-ext-enable pcov
 
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 

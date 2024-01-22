@@ -37,7 +37,7 @@ class ProductRepositoryTest extends FunctionalTestCase
         $this->importCSVDataSet(__DIR__ . '/Fixtures/PersistedProduct.csv');
 
         $products = $this->repository->findAll();
-        self::assertCount(1, $products);
+        self::assertCount(2, $products);
 
         $product = $products->getFirst();
         self::assertInstanceOf(Product::class, $product);

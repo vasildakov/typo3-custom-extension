@@ -72,6 +72,7 @@
         "codeception/module-phpbrowser": "*",
         "dmore/behat-chrome-extension": "^1.4",
         "dmore/chrome-mink-driver": "^2.9",
+        "dvdoug/behat-code-coverage": "^5.3",
         "friends-of-behat/mink-extension": "^2.7",
         "friendsofphp/php-cs-fixer": "^3.45",
         "phpspec/prophecy": "^1.18",

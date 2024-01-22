@@ -1,7 +1,9 @@
 .DS_Store
 .idea
+.phive
 nbproject
 /var/*
+/app/log
 !/var/labels
 /vendor
 /public/*

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "559e2f4e1c8a788a36186ca2d82add10",
+    "content-hash": "cfa47d5b48b058c7693708e15340a56b",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -8445,6 +8445,84 @@
             "time": "2023-04-03T10:37:34+00:00"
         },
         {
+            "name": "dvdoug/behat-code-coverage",
+            "version": "v5.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dvdoug/behat-code-coverage.git",
+                "reference": "dda40785dd75249888b60aa1b10de0491cb48093"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dvdoug/behat-code-coverage/zipball/dda40785dd75249888b60aa1b10de0491cb48093",
+                "reference": "dda40785dd75249888b60aa1b10de0491cb48093",
+                "shasum": ""
+            },
+            "require": {
+                "behat/behat": "^3.10",
+                "composer-runtime-api": "^2.0",
+                "composer/semver": "^3.0",
+                "php": "^7.4 || ^8.0",
+                "phpunit/php-code-coverage": "^9.2.16||^10.0",
+                "symfony/config": "^5.1.4||^6.0||^7.0",
+                "symfony/console": "^5.3.7||^6.0.9||^7.0",
+                "symfony/dependency-injection": "^5.1.4||^6.0||^7.0",
+                "symfony/event-dispatcher": "^5.0||^6.0||^7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.38.0",
+                "phpunit/phpunit": "^9.5.5||^10.0",
+                "symfony/filesystem": "^5.0||^6.0||^7.0"
+            },
+            "suggest": {
+                "ext-pcov": "PCOV allows you to collect line coverage only, but is faster than Xdebug",
+                "ext-xdebug": "Xdebug allows you to collect line, branch and path coverage"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DVDoug\\Behat\\CodeCoverage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Doug Wright",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate Code Coverage reports for Behat tests",
+            "homepage": "https://behat.cc",
+            "keywords": [
+                "BDD",
+                "Behat",
+                "clover",
+                "cobertura",
+                "code",
+                "code-coverage",
+                "coverage",
+                "report",
+                "reports",
+                "scenario",
+                "test",
+                "tests"
+            ],
+            "support": {
+                "issues": "https://github.com/dvdoug/behat-code-coverage/issues",
+                "source": "https://github.com/dvdoug/behat-code-coverage/tree/v5.3.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/dvdoug",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-12-09T14:29:08+00:00"
+        },
+        {
             "name": "fabpot/goutte",
             "version": "v4.0.3",
             "source": {
@@ -8569,16 +8647,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.47.1",
+            "version": "v3.48.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "173c60d1eff911c9c54322704623a45561d3241d"
+                "reference": "a92472c6fb66349de25211f31c77eceae3df024e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/173c60d1eff911c9c54322704623a45561d3241d",
-                "reference": "173c60d1eff911c9c54322704623a45561d3241d",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/a92472c6fb66349de25211f31c77eceae3df024e",
+                "reference": "a92472c6fb66349de25211f31c77eceae3df024e",
                 "shasum": ""
             },
             "require": {
@@ -8648,7 +8726,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.47.1"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.48.0"
             },
             "funding": [
                 {
@@ -8656,7 +8734,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-16T18:54:21+00:00"
+            "time": "2024-01-19T21:44:39+00:00"
         },
         {
             "name": "instaclick/php-webdriver",
@@ -8782,16 +8860,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "a9d127dd6a203ce6d255b2e2db49759f7506e015"
+                "reference": "d3ad0aa3b9f934602cb3e3902ebccf10be34d218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/a9d127dd6a203ce6d255b2e2db49759f7506e015",
-                "reference": "a9d127dd6a203ce6d255b2e2db49759f7506e015",
+                "url": "https://api.github.com/repos/nette/utils/zipball/d3ad0aa3b9f934602cb3e3902ebccf10be34d218",
+                "reference": "d3ad0aa3b9f934602cb3e3902ebccf10be34d218",
                 "shasum": ""
             },
             "require": {
@@ -8862,9 +8940,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.3"
+                "source": "https://github.com/nette/utils/tree/v4.0.4"
             },
-            "time": "2023-10-29T21:02:13+00:00"
+            "time": "2024-01-17T16:50:36+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -9431,16 +9509,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.7",
+            "version": "10.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e5c5b397a95cb0db013270a985726fcae93e61b8"
+                "reference": "08f4fa74d5fbfff1ef22abffee47aaedcaea227e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e5c5b397a95cb0db013270a985726fcae93e61b8",
-                "reference": "e5c5b397a95cb0db013270a985726fcae93e61b8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/08f4fa74d5fbfff1ef22abffee47aaedcaea227e",
+                "reference": "08f4fa74d5fbfff1ef22abffee47aaedcaea227e",
                 "shasum": ""
             },
             "require": {
@@ -9512,7 +9590,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.7"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.8"
             },
             "funding": [
                 {
@@ -9528,7 +9606,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-14T16:40:30+00:00"
+            "time": "2024-01-19T07:07:27+00:00"
         },
         {
             "name": "phrity/net-uri",

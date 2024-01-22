@@ -14,6 +14,25 @@ default:
             wd_host: localhost:4444/wd/hub
             capabilities: {"browserName": "chrome", "browser": "chrome"}
 
+    DVDoug\Behat\CodeCoverage\Extension:
+      filter:
+        include:
+          directories:
+            '_packages/site_package/Classes': ~
+        exclude:
+          directories:
+            'vendor': ~
+            'var': ~
+            'features': ~
+            'config': ~
+            'log': ~
+            '_packages/site_package/Tests': ~
+      reports:
+        html:
+          target: var/log/coverage-behat
+        text:
+          showColors: true
+
   suites:
     default:
       contexts: [FeatureContext]
